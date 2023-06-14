@@ -1,0 +1,51 @@
+<cabecera-component></cabecera-component>
+
+<aside class="main-sidebar">
+
+    <section class="sidebar">
+
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MENÚ</li>
+            <!-- <li class="treeview" *ngFor="let item of menu">
+                <a href="#">
+                    <i class="fa {{ item.icono }}"></i>
+                    <span>{{ item.nombre }}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" *ngIf="item?.hijos?.length > 0">
+                    <li *ngFor="let hijo of item?.hijos" [ngClass]="{treeview: hijo?.hijos?.length > 0 && hijo.router == null}">
+                        <a *ngIf="hijo?.router != null" routerLink="{{ hijo.router }}">
+                            <i class="fa {{ hijo.icono }}"></i>
+                            {{ hijo.nombre }}
+                        </a>
+                        <a *ngIf="hijo?.router == null">
+                            <i class="fa {{ hijo.icono }}"></i> {{ hijo.nombre }}
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu" *ngIf="hijo?.hijos?.length > 0">
+                            <li *ngFor="let hijo of hijo?.hijos">
+                                <a routerLink="{{ hijo.router }}">
+                                    <i class="fa {{ hijo.icono }}"></i>
+                                    <p>{{ hijo.nombre }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li> -->
+        </ul>
+    </section>
+
+</aside>
+
+<div class="content-wrapper">
+    <router-outlet></router-outlet>
+</div>
+
+<footer class="main-footer">
+
+</footer>
