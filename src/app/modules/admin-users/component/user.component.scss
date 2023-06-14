@@ -1,0 +1,18 @@
+.head-tools{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    mat-form-field{
+        flex-direction: inherit !important;
+        // width: 100%;
+        width: 70%;
+
+        button{
+            mat-icon{
+                color: #49454F;
+            }
+        }
+    }
+
+} 

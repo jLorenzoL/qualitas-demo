@@ -16,7 +16,7 @@ body {
 }
 
 body {
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     overflow-x: hidden;
     overflow-y: auto
@@ -105,7 +105,7 @@ body {
 
 .content-wrapper {
     min-height: 100%;
-    background-color: #ecf0f5;
+    background-color: #F4F5F5;
     z-index: 800
 }
 
@@ -183,7 +183,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: 'Source Sans Pro', sans-serif
+    font-family: 'Montserrat', sans-serif
 }
 
 a {
@@ -211,7 +211,7 @@ a:focus {
 
 .main-header {
     position: relative;
-    max-height: 100px;
+    max-height: 92px;
     z-index: 1030
 }
 
@@ -223,7 +223,8 @@ a:focus {
     margin-left: 230px;
     border: none;
     min-height: 50px;
-    border-radius: 0
+    border-radius: 0;
+    height: 92px;
 }
 
 .layout-top-nav .main-header .navbar {
@@ -256,7 +257,7 @@ a:focus {
 
 .main-header .navbar-custom-menu,
 .main-header .navbar-right {
-    float: right
+    /* float: right */
 }
 
 @media (max-width:991px) {
@@ -284,7 +285,7 @@ a:focus {
 }
 
 .main-header .sidebar-toggle {
-    float: left;
+    /* float: left; */
     background-color: transparent;
     background-image: none;
     padding: 15px 15px;
@@ -296,12 +297,12 @@ a:focus {
 }
 
 .main-header .sidebar-toggle:hover {
-    color: #fff
+    color: #7D127B
 }
 
 .main-header .sidebar-toggle:focus,
 .main-header .sidebar-toggle:active {
-    background: transparent
+    background: transparent;
 }
 
 .main-header .sidebar-toggle .icon-bar {
@@ -384,9 +385,11 @@ a:focus {
 }
 
 .content-header>.breadcrumb>li>a {
-    color: #444;
+    color: #7D127B;
     text-decoration: none;
-    display: inline-block
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .content-header>.breadcrumb>li>a>.fa,
@@ -396,7 +399,7 @@ a:focus {
 }
 
 .content-header>.breadcrumb>li+li:before {
-    content: '>\00a0'
+    content: '/\00a0'
 }
 
 @media (max-width:991px) {
@@ -476,7 +479,7 @@ a:focus {
     position: absolute;
     top: 0;
     left: 0;
-    padding-top: 50px;
+    padding-top: 92px;
     min-height: 100%;
     width: 230px;
     z-index: 810;
@@ -657,7 +660,7 @@ a:focus {
     .sidebar-mini.sidebar-collapse .content-wrapper,
     .sidebar-mini.sidebar-collapse .right-side,
     .sidebar-mini.sidebar-collapse .main-footer {
-        margin-left: 50px !important;
+        margin-left: 6rem !important;
         z-index: 840
     }
 
@@ -666,7 +669,7 @@ a:focus {
         -ms-transform: translate(0, 0);
         -o-transform: translate(0, 0);
         transform: translate(0, 0);
-        width: 50px !important;
+        width: 6rem !important;
         z-index: 850
     }
 
@@ -703,7 +706,10 @@ a:focus {
     }
 
     .sidebar-mini.sidebar-collapse .main-header .logo {
-        width: 50px
+        display: flex;
+        align-items: center;
+        width: 100px;
+        height: 92px;
     }
 
     .sidebar-mini.sidebar-collapse .main-header .logo>.logo-mini {
@@ -718,7 +724,8 @@ a:focus {
     }
 
     .sidebar-mini.sidebar-collapse .main-header .navbar {
-        margin-left: 50px
+        margin-left: 100px;
+        height: 92px;
     }
 }
 
@@ -795,7 +802,8 @@ a:focus {
 .control-sidebar-bg {
     position: fixed;
     z-index: 1000;
-    bottom: 0
+    bottom: 0;
+    padding-top: 92px;
 }
 
 .control-sidebar-bg,
@@ -805,7 +813,7 @@ a:focus {
     width: 230px;
     -webkit-transition: right .3s ease-in-out;
     -o-transition: right .3s ease-in-out;
-    transition: right .3s ease-in-out
+    transition: right .3s ease-in-out;
 }
 
 .control-sidebar {
@@ -2741,15 +2749,16 @@ a:focus {
 }
 
 .btn-default {
-    background-color: #f4f4f4;
-    color: #444;
-    border-color: #ddd
+    background-color: transparent;
+    /* color: #444; */
+    /* border-color: #ddd */
 }
 
 .btn-default:hover,
 .btn-default:active,
 .btn-default.hover {
-    background-color: #e7e7e7
+    background-color: transparent;
+    /* background-color: #e7e7e7 */
 }
 
 .btn-primary {
@@ -3160,8 +3169,16 @@ a:focus {
 }
 
 .pagination>li>a {
-    background: #fafafa;
-    color: #666
+    /* background: #fafafa;
+    color: #666 */
+    background: #fff !important;
+    border: 1px solid #FFEBF7;
+    color: #363A3C;
+    margin-left: 16px;
+    font-weight: bolder;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 4px;
 }
 
 .pagination.pagination-flat>li>a {

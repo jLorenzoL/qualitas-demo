@@ -1,0 +1,64 @@
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li>
+            <a>
+                Inicio
+            </a>
+        </li>
+        <li class="active"> Administracion de usuarios </li>
+    </ol>
+    <br>
+</section>
+
+<section class="content">
+
+    <!-- <div class="card card-danger">
+        <div class="card-header"> -->
+            <h1 style="
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+">Administración de usuarios</h1>
+        <!-- </div>
+    </div> -->
+
+    <div class="head-tools">
+    
+        <mat-form-field appearance="outline">
+            <input matInput  placeholder="Buscar usuario">
+            <mat-icon matPrefix color="primary">search</mat-icon>
+            <!-- <button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput()">
+                <mat-icon color="primary">close</mat-icon>
+            </button> -->
+        </mat-form-field>
+    
+    </div>
+
+    <section class="py-2">
+        <span>Mostrando {{registro}} resultados 
+        </span>
+    </section>
+
+    <div class="card-body">
+        <ng-table-component [data]="dataGrilla" [settings]="settings" (edit)="editarUsuario($event)" (darDeBaja)="darDeBajaUsuario($event)"
+        (enlace)="enlaceClick($event)">
+        </ng-table-component>
+
+        <div *ngIf="visible">
+        <div class="btn-group pull-left">
+        <label style="margin-top:10px">Página {{pagina}}/{{pageNumber}}</label>
+        </div>
+        <div class="btn-group pull-right">
+
+        <pagination [rotate]="false" [rotate]="true" [maxSize]="5" [boundaryLinks]="true" previousText="Anterior" nextText="Siguiente"
+            firstText="&laquo;" lastText="&raquo;" [totalItems]="registro" (numPages)="pageNumber = $event" [(ngModel)]="pagina"
+            (pageChanged)="paginacionClick($event)"></pagination>
+        </div>
+        </div>
+        <div class="row pad-bottom-20" *ngIf="!visible">
+            NO RESULTADO
+        </div>
+    </div>
+
+</section>

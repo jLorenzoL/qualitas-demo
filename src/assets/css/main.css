@@ -1,10 +1,18 @@
 .thead-margesi {
-  background: rgb(191, 191, 191);
+  background: #FFFFFF;/* rgb(191, 191, 191);*/
   color: #000;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background: rgb(219, 229, 241);
+  background: #F4F5F5/*rgb(219, 229, 241);*/
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background: #FFFFFF/*rgb(219, 229, 241);*/
+}
+
+.table-striped tbody tr:hover {
+  background-color: #FFEBF7 /*rgba(0, 0, 0, .075)*/
 }
 
 .panel.card.panel-default {
@@ -15,6 +23,45 @@
   margin-bottom: 20px;
   width: 100%;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.chip{
+  padding: 4px 12px;
+  gap: 8px;
+  width: 101px;
+  height: 32px;
+  border: 1px solid #6C7579;
+  border-radius: 12px;
+}
+
+.chip-active{
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;                
+  background: #C5DAD4;
+  color: #00957A;
+}
+
+.chip-inactive{
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;         
+  background: #FFDAD6;
+  color: #DE3730;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
 }
 
 .panel-heading {
@@ -126,7 +173,8 @@ a:active {
 .skin-yellow-light .main-header .logo:hover,
 .skin-yellow-light .main-header .navbar .sidebar-toggle:hover,
 .skin-yellow-light .main-header li.user-header {
-  background: #3c8dbc;
+  background: #FFFFFF;
+  /* height: 92px; */
 }
 
 .card-header h5 {

@@ -1,0 +1,27 @@
+<mat-dialog-content>
+    <div class="contain-disable">
+        <div class="container">
+            <label class="icon-delete">
+                <mat-icon>delete</mat-icon>
+            </label>
+        </div>
+    
+        <div class="container-text">
+            <strong class="text-question">
+                ¿Estas seguro?
+            </strong>
+
+            <p class="text"> Al dar de baja a <strong>Ana Eugenia</strong> ya no podrás activarle nuevamente.
+            </p>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="container">
+    <button mat-button tabindex="-1" class="cancel-button" (click)="onNoClick()">
+        Cancelar
+    </button>
+    <button mat-button class="ok-button" (click)="disableUser()">
+       Dar de baja
+    </button>
+</mat-dialog-actions>

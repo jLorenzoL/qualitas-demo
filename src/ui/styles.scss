@@ -1,0 +1,149 @@
+
+@use '@angular/material' as mat;
+@include mat.core();
+
+$dark-primary-text: #26292B;
+$light-primary-text: white;
+$grey-primary-background: #CCCCCC;
+
+$qualitas-primary-palette: (
+  50 : #f3e6f2,
+  100 : #e1c2df,
+  200 : #cd99ca,
+  300 : #b870b5,
+  400 : #a951a5,
+  500 : #9a3295,
+  600 : #922d8d,
+  700 : #882682,
+  800 : #7e1f78,
+  900 : #6c1367,
+  A100 : #ffa3f8,
+  A200 : #ff70f5,
+  A400 : #ff3df1,
+  A700 : #ff24ef,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$qualitas-accent-palette: (
+  50 : #e0f2ef,
+  100 : #b3dfd7,
+  200 : #80cabd,
+  300 : #4db5a2,
+  400 : #26a58e,
+  500 : #00957a,
+  600 : #008d72,
+  700 : #008267,
+  800 : #00785d,
+  900 : #00674a,
+  A100 : #96ffdc,
+  A200 : #63ffcb,
+  A400 : #30ffba,
+  A700 : #17ffb2,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$qualitas-warn-palette: (
+  50 : #fbe7e6,
+  100 : #f5c3c1,
+  200 : #ef9b98,
+  300 : #e8736e,
+  400 : #e3554f,
+  500 : #de3730,
+  600 : #da312b,
+  700 : #d52a24,
+  800 : #d1231e,
+  900 : #c81613,
+  A100 : #fff8f8,
+  A200 : #ffc6c5,
+  A400 : #ff9392,
+  A700 : #ff7a79,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$gruas-qualitas-primary: mat.define-palette($qualitas-primary-palette);
+$gruas-qualitas-accent: mat.define-palette($qualitas-accent-palette);
+$gruas-qualitas-warn: mat.define-palette($qualitas-warn-palette);
+
+$gruas-qualitas-theme: mat.define-light-theme((
+  color: (
+    primary: $gruas-qualitas-primary,
+    accent: $gruas-qualitas-accent,
+    warn: $gruas-qualitas-warn,
+  )
+));
+
+@include mat.all-component-themes($gruas-qualitas-theme);
+
+
+html, body { height: 100%; }
+body { 
+  margin: 0; 
+  font-family: 'Montserrat', sans-serif;
+}
+
+.custom-contain .mat-mdc-dialog-container .mdc-dialog__surface{
+  border-radius: 28px !important;
+}
+
+.contain-detail .mat-mdc-dialog-container .mdc-dialog__surface {
+  overflow: hidden;
+}
+
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  width: 552px;
+  height: 80px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+// body > app-root > app-administration-users > div > section > app-table-users > div > mat-paginator > div > div > div.mat-mdc-paginator-page-size,
+// body > app-root > app-administration-users > div > section > app-table-users > mat-paginator > div > div > div.mat-mdc-paginator-page-size,
+// body > app-root > app-administration-users > div > section > app-table-users > mat-paginator > div > div > div.mat-mdc-paginator-range-actions > div{
+//   display: none;
+// }

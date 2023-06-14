@@ -1,0 +1,168 @@
+<div class="row pad-top-20">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+
+                <thead class="thead-margesi">
+                    <tr>
+                        <th *ngFor="let map of columnMaps" class="text-center">
+                            <div *ngIf="settings">
+                                    <div class="d-flex flex-row justify-content-center align-items-center align-content-center">
+                                        {{ map.header }}
+                                        <div *ngFor="let button of map.children" [ngClass]="{'btn-group':map.property === 'button'}">
+                                            
+                                            <button *ngIf="button.type == 'sort'" type="button" tooltip="{{ button.tooltip }}"  (click)="ordenar(valSort)"
+                                                class="btn btn-default">
+                                                <i class="fa {{button.icon}}"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let record of returnedArray; let i = index" class="text-center"  [attr.data-index]="i" [ngClass]="">
+                        <td *ngFor="let map of columnMaps" [ngClass]="{th_number: map.property === 'number'|| map.property === 'monto' || map.property==='icono' || map.property === 'radioButton' ||map.property === 'checkButton' || map.property === 'hipervinculo' || map.property === 'linkPage' || map.property === 'hipervinculoPopUp', th_button:map.property === 'button' && map.children.length >= 3, th_button_6:map.property === 'button' && map.children.length >= 4 , th_button_1:map.property === 'button' && (map.children.length == 1 || map.children.length == 2) }">
+
+                            <div *ngIf="settings">
+                                <div *ngIf="map.property == 'button'">
+                                    <div *ngFor="let button of map.children" [ngClass]="{'btn-group':map.property === 'button'}">
+                                        <button *ngIf="button.type == 'popUp'" type="button" tooltip="{{ button.tooltip }}" container="body" (click)="editar(record)"
+                                            class="btn btn-default" [ngClass]="{'disabled-button-table':(disabledButton === true || (record.disabledButtonPersonalizado == true))}">
+                                            <i class="fa {{button.icon}}"></i>
+                                        </button>
+                                        <button *ngIf="button.type == 'edit'" type="button" (click)="link(record, button.primaryKey)" tooltip="{{ button.tooltip }}"
+                                            container="body" class="btn btn-default" [ngClass]="{'disabled-button-table':(disabledButton === true || (record.disabledButtonPersonalizado == true))}">
+                                            <i class="fa {{button.icon}}"></i>
+                                        </button>
+                                        <button *ngIf="button.type == 'enlace'" (click)="link(record, button.primaryKey)" type="button" tooltip="{{ button.tooltip }}"
+                                            container="body" class="btn btn-default" [ngClass]="{'disabled-button-table':(disabledButton === true || (record.disabledButtonPersonalizado == true))}">
+                                            <i class="fa {{button.icon}}" [ngStyle]="{'transform': button.rotate ? 'rotate(90deg)' : null } "></i>
+                                        </button>
+
+                                        <button *ngIf="button.type == 'valida'" (click)="valida(record)" type="button" tooltip="{{ button.tooltip }}" container="body"
+                                            class="btn btn-default" [ngClass]="{'disabled-button-table':(disabledButton === true || (record.disabledButtonPersonalizado == true))}">
+                                            <i class="fa {{button.icon}}"></i>
+                                        </button>
+
+                                        <button *ngIf="button.type == 'unsubscribe'" type="button" tooltip="{{ button.tooltip }}" container="body" class="btn btn-default">
+                                            <i class="fa {{button.icon}}"></i>
+                                        </button>
+                                        <div *ngIf="button.type == 'delete'">
+                                            <div *ngIf="button.seguridad">
+                                                <button *tienePermiso="button.seguridad" (click)="eliminar(record)" type="button" tooltip="{{ button.tooltip }}" container="body"
+                                                    class="btn btn-default" [ngClass]="{'disabled-button-table':(disabledButton === true || (record.disabledButtonPersonalizado == true))}">
+                                                    <i class="fa {{button.icon}}"></i>
+                                                </button>
+                                            </div>
+                                            <div *ngIf="!button.seguridad">
+                                                <button (click)="eliminar(record)" type="button" tooltip="{{ button.tooltip }}" container="body" class="btn btn-default"
+                                                    [ngClass]="{'disabled-button-table':(disabledButton === true || (record.disabledButtonPersonalizado == true))}">
+                                                    <i class="fa {{button.icon}}"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <button *ngIf="button.type == 'descarga'" (click)="descargar(record)" type="button" tooltip="{{ button.tooltip }}" container="body"
+                                            class="btn btn-default" [ngClass]="{'disabled-button-table':(disabledButton === true || (record.disabledButtonPersonalizado == true))}">
+                                            <i class="fa {{button.icon}}"></i>
+                                        </button>
+                                        <button *ngIf="button.type == '_blank'" (click)="visualizar(record)" type="button" tooltip="{{ button.tooltip }}" container="body"
+                                            class="btn btn-default" [ngClass]="{'disabled-button-table':(disabledButton === true || (record.disabledButtonPersonalizado == true))}">
+                                            <i class="fa {{button.icon}}"></i>
+                                        </button>
+                                        
+                                        <div *ngIf="button.type == 'options'">
+                                            <button *ngIf="button.type == 'options'" [matMenuTriggerFor]="menu" type="button" tooltip="{{ button.tooltip }}" container="body"
+                                                class="btn btn-default">
+                                                <i class="fa {{button.icon}}"></i>
+                                            </button>
+                                            <mat-menu #menu="matMenu">
+                                                <button mat-menu-item (click)="openOpcionsEditar(record)">
+                                                <mat-icon>edit</mat-icon>
+                                                <span>Editar</span>
+                                                </button>
+                                                <button mat-menu-item (click)="openOpcionsEliminar(record)">
+                                                <mat-icon>delete</mat-icon>
+                                                <span>Dar de baja</span>
+                                                </button>
+                                            </mat-menu>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div *ngIf="map.property == 'number'">
+                                    {{ record[map.primaryKey] }}
+                                </div>
+                                <div *ngIf="map.property == 'hipervinculoPopUp' && map.primaryKey == 'item' ">
+                                    <a (click)="consultar(record)">
+                                        {{ record[map.primaryKey] }}
+                                    </a>
+                                </div>
+                                <div *ngIf="map.property == 'hipervinculoPopUp' && map.primaryKey != 'item'">
+                                    <a (click)="consultar(record)">
+                                        {{ record[map.primaryKey] }}
+                                    </a>
+                                </div>
+                                <div *ngIf="map.property == 'hipervinculo' && map.primaryKey == 'item' ">
+                                    <a (click)="linkConsulta(record, map.link)">
+                                        {{ record[map.primaryKey] }}
+                                    </a>
+                                </div>
+                                <div *ngIf="map.property == 'hipervinculo' && map.primaryKey != 'item' ">
+                                    <a (click)="linkConsulta(record, map.link)">
+                                        {{ record[map.primaryKey] }}
+                                    </a>
+                                </div>
+                                <div *ngIf="map.property == 'radioButton'">
+                                    <input type="radio" name="name" #rbtBtn [checked]='false' (change)="rbtnClick(record, rbtBtn)">
+                                </div>
+                                <div *ngIf="map.property == 'checkButton'">
+                                    <input type="checkbox" name="name" #chkBtn [checked]='true' (change)="chkClick(record, chkBtn)">
+                                </div>
+                                <div *ngIf="map.property == 'date'">
+                                    {{ record[map.primaryKey] | date : 'dd/MM/yyyy' }}
+                                </div>
+                                <div *ngIf="map.property == 'indicador'">
+                                        {{ record[map.primaryKey] == '1'? 'SI':'NO'  }}
+                                </div>
+                                <div *ngIf="!map.property">
+                                    {{ record[map.primaryKey] }}
+                                </div>
+                                <div *ngIf="map.property == 'icono'">
+                                    <label *ngIf="(record[map.primaryKey]!=undefined && record[map.primaryKey]=='0')" style="color: green">SI</label>
+                                    <label *ngIf="(record[map.primaryKey]!=undefined && record[map.primaryKey]=='1')" style="color: red ">NO</label>
+                                </div>
+                                <div *ngIf="map.property == 'linkPage' && map.primaryKey == 'item' ">
+                                    <a (click)="linkPage(record.link)">
+                                        {{ record[map.primaryKey] }}
+                                    </a>
+                                </div>
+                                <div *ngIf="map.property == 'linkPage' && map.primaryKey != 'item' ">
+                                    <a (click)="linkPage(record.link)">
+                                        {{ record[map.primaryKey] }}
+                                    </a>
+                                </div>
+                                <div *ngIf="map.property == 'personalized' && map.primaryKey != 'item' ">
+                                    <span class="chip">{{ record[map.primaryKey] }}</span>
+                                </div>
+                                <div *ngIf="map.property == 'chipPersonalize' && map.primaryKey != 'item' ">
+                                    <span [ngClass]="record[map.primaryKey] === 'ACTIVO' ? 'chip-active' : 'chip-inactive'">{{ record[map.primaryKey] }}</span>
+                                </div>
+                                <!-- <div *ngIf="map.property == 'monto'">
+                                    {{ convertirNumero(record[map.primaryKey]) }}
+                                </div> -->
+                            </div>
+                            <div *ngIf="!settings">
+                                {{ record[map.primaryKey] }}
+                            </div>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
