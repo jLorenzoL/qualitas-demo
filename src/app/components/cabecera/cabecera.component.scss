@@ -1,0 +1,224 @@
+$colors: (
+    white1: #fff,
+    black1: #000,
+    gray1: #666,
+    gray2: #979797,
+    gray3: #4c4c4c,
+    gray4: #b9c6d1,
+    gray5: #f7f8f9,
+    gray6: #888383,
+    gray7: #d5d5d5,
+    gray8: #4b4b4b,
+    gray9: #747474,
+    gray10: #8e8e8e,
+    gray11: #f2f2f2,
+    gray12: #e8e8e8,
+    gray13: #444,
+    gray14: #aaa,
+    gray15: #dee3e7,
+    gray16: #d8d8d8,
+    gray17: #d0d0d1,
+    red1: #d81e05,
+    red2: #d51c07,
+    red3: #b80800,
+    red4: #ea6676,
+    red5: #ef4e4e,
+    red6: #e85273,
+    red7: #fff4ec,
+    red8: #b80800,
+    red9: #520000,
+    green1: #8db602,
+    green2: #86c414,
+    green3: #20af97,
+    green4: #37bd74,
+    green5: #159139,
+    green7: #f8ffe0,
+    purple1: #8e187e,
+    purple2: #7d49a3,
+    purple3: #90288C,
+    blue1: #00b6ff,
+    blue2: #d8f0fb,
+    orange1: #ef9454,
+    yellow1: #fcc500,
+);
+
+.g-circle {
+    &--gray5 {
+        background-color: map-get($colors, gray5);
+        border-radius: 50%;
+        height: 90px;
+        width: 90px;
+    }
+
+    &--item {
+        border-radius: 50%;
+        display: inline-block;
+        height: 70px;
+        padding-top: 7px;
+        width: 70px;
+    }
+
+    &--white {
+        background: map-get($colors, white1);
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+    }
+
+    &--purple3 {
+        background: map-get($colors, purple3);
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.g-text {
+    &--uppercase {
+        text-transform: uppercase;
+    }
+
+    &--lowercase {
+        text-transform: lowercase;
+    }
+
+    &--capitalize {
+        text-transform: capitalize;
+    }
+
+    &--none {
+        text-transform: none;
+    }
+
+    &--decoration {
+        text-decoration: none;
+    }
+
+    &--underline {
+        text-decoration: underline;
+    }
+
+    &--linethrough {
+        text-decoration: line-through;
+    }
+}
+
+// Weight
+$light: 300;
+$normal: 400;
+$medium: 500;
+$bold: 700;
+
+$break-x4small: 320px;
+$break-xxxsmall: 375px;
+$break-xxsmall: 414px;
+$break-xsmall: 480px;
+$break-small: 576px;
+$break-medium: 768px;
+$break-large: 992px;
+$break-xlarge: 1200px;
+$break-2xlarge: 1378px;
+
+// Font Weight
+.g-font {
+
+    &--light {
+        font-weight: $light;
+    }
+
+    &--normal {
+        font-weight: $normal;
+    }
+
+    &--medium {
+        font-weight: $medium;
+    }
+
+    &--bold {
+        font-weight: $bold;
+    }
+
+    &--italic {
+        font-style: italic;
+    }
+
+    @media (min-width: $break-medium) {
+
+        &-m--light {
+            font-weight: $light;
+        }
+
+        &-m--normal {
+            font-weight: $normal;
+        }
+
+        &-m--medium {
+            font-weight: $medium;
+        }
+
+        &-m--bold {
+            font-weight: $bold;
+        }
+
+        &-m--italic {
+            font-style: italic;
+        }
+    }
+
+    @media (min-width: $break-large) {
+
+        &-lg--light {
+            font-weight: $light;
+        }
+
+        &-lg--normal {
+            font-weight: $normal;
+        }
+
+        &-lg--medium {
+            font-weight: $medium;
+        }
+
+        &-lg--bold {
+            font-weight: $bold;
+        }
+
+        &-lg--italic {
+            font-style: italic;
+        }
+    }
+
+    @media (min-width: $break-xlarge) {
+
+        &-xl--light {
+            font-weight: $light;
+        }
+
+        &-xl--normal {
+            font-weight: $normal;
+        }
+
+        &-xl--medium {
+            font-weight: $medium;
+        }
+
+        &-xl--bold {
+            font-weight: $bold;
+        }
+
+        &-xl--italic {
+            font-style: italic;
+        }
+    }
+}
+
+$font-start: 9;
+$font-end: 75;
+
+@for $i from $font-start through $font-end {
+    $number: 1 * $i;
+
+    .g-font--#{$i} {
+        font-size: $number + px;
+    }
+}

@@ -6,6 +6,9 @@ import { Settings } from "src/app/models/settings.interface";
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DisableUserComponent } from '../disable-user/disable-user.component';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
     selector: 'user-containers',
@@ -34,13 +37,24 @@ export class UserComponent implements OnInit {
 
     busqueda: Busqueda = new Busqueda();
 
+    searchControl = new FormControl();
+
+    resultCountText= false;
+
     constructor(
         private _userService : UserService,
-        public dialog: MatDialog
-    ){}
+        public dialog: MatDialog,
+        private spinner: NgxSpinnerService
+    ){
+        this.searchControl.valueChanges
+        .pipe(debounceTime(500)) 
+        .subscribe(value => {
+          this.busqueda.criteria = value;
+          this.buscar();
+        });
+    }
 
     ngOnInit(): void {
-
         this.settings = [
             {
                 primaryKey: 'employee',
@@ -96,25 +110,25 @@ export class UserComponent implements OnInit {
         ];
 
         this.busqueda = new Busqueda();
-
-        this.buscar();
-        
     }
 
     buscar() {
         this.pagina = 1;
         this.busqueda.pageSize = 1;
         this.busqueda.pagina = 1;
-        this.buscarUsuario();
+        //this.buscarUsuario();
     }
 
     buscarUsuario(){
+        this.spinner.show();
         this._userService.getListUser(this.busqueda).subscribe(x => {
+            this.resultCountText = true
             let numerador = this.grillaItem(x.data, this.busqueda, this.paginaTemporal, this.contadorTemporal);
             this.dataGrilla = numerador.grilla;
             this.contadorTemporal = numerador.contadorTemporal;
             this.registro = x.totalRecords;
             this.visible = this.dataGrilla.length > 0;
+            this.spinner.hide();
         });
     }
 
@@ -171,17 +185,35 @@ export class UserComponent implements OnInit {
         
     }
     
-      editarUsuario(item: any): void {
-        let template = "";
+    editarUsuario(item: any): void {
+    let template = "";
+
     
+    }
+
+
+    enlaceClick(item: any): void {
+    let template = "";
+
+    
+    }
+
+    abrirModal(event:any){
+        let x = '10rem';
+        let y = '10vh';
         
-      }
-    
-    
-      enlaceClick(item: any): void {
-        let template = "";
-    
-        
-      }
+        // let dialogRef = this.dialog.open(DialogComponent,{
+        // width:'552px',
+        // position: {right: x, top: y} 
+        // })
+
+        // dialogRef.afterClosed().subscribe({
+        // next:(val) => {
+        // // if(val){
+        //     console.log('cerró modal')
+        // // }
+        // }
+        // });
+    }
 
 }

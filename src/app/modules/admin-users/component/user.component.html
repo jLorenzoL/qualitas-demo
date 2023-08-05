@@ -26,17 +26,29 @@
     <div class="head-tools">
     
         <mat-form-field appearance="outline">
-            <input matInput  placeholder="Buscar usuario">
+            <input [formControl]="searchControl" [(ngModel)]="inputValue"  matInput placeholder="Buscar usuario">
             <mat-icon matPrefix color="primary">search</mat-icon>
-            <!-- <button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput()">
+            <!-- <button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
                 <mat-icon color="primary">close</mat-icon>
             </button> -->
         </mat-form-field>
+
+        <div>
+            <button mat-flat-button color="primary" (click)="abrirModal($event)">
+                <span>
+                    Nuevo usuario
+                    <mat-icon fontIcon="add"></mat-icon>
+                </span>
+            </button>
+        </div>
+        
     
     </div>
 
     <section class="py-2">
         <span>Mostrando {{registro}} resultados 
+            <span *ngIf="resultCountText && inputValue.length !== 0">para </span>
+            <span class="highlight" *ngIf="resultCountText">{{inputValue}}</span>  
         </span>
     </section>
 

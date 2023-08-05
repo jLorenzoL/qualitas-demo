@@ -13,8 +13,11 @@ import { UserComponent } from './modules/admin-users/component/user.component';
 import { TableDynamicModule } from './components/tabla/table.module';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { UserService } from './services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DisableUserComponent } from './modules/admin-users/disable-user/disable-user.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { TokenInterceptor } from './services/autorizacion/token.interceptor';
+import { ReusableService } from './services/reusable.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,7 @@ import { DisableUserComponent } from './modules/admin-users/disable-user/disable
     PrincipalComponent,
     CabeceraComponent,
     UserComponent,
-    DisableUserComponent
+    DisableUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,13 +38,23 @@ import { DisableUserComponent } from './modules/admin-users/disable-user/disable
     BrowserAnimationsModule,
     TableDynamicModule,
     PaginationModule.forRoot(),
+    NgxSpinnerModule.forRoot()
   ],
   exports: [
     TableDynamicModule,
-    PaginationModule
+    PaginationModule,
+    NgxSpinnerModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    ReusableService,
+    /*{
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }*/
+  ],
   bootstrap: [AppComponent],
-  // schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

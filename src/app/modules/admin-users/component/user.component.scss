@@ -16,3 +16,21 @@
     }
 
 } 
+
+button{
+    height: 48px;
+    width: 185px;
+
+    span{
+        display: flex;
+        align-items: center;
+        mat-icon{
+            margin-left: 12px;
+        }
+    }
+}
+
+.highlight {
+    background-color: rgba(255, 235, 247, 1);
+    color: #7D127B !important;
+}

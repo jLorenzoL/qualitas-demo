@@ -26,34 +26,22 @@
         <div class="d-flex col-sm-6 justify-content-end">
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- <li class="dropdown notifications-menu">
-                        <a [routerLink]="['/metricas']" class="dropdown">
-                            <i class="fa fa-pie-chart" aria-hidden="true"></i>
-                            <span class="label label-success">Inicio</span>
-                        </a>
-                    </li> -->
-                    <!-- <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="hidden-xs">{{ nombre }}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="user-header">
-    
-                                <p>
-                                    Bienvenido Sr(a) {{ nombre }}
-                                    <small>{{ fecha }}</small>
-                                </p>
-                            </li>
-    
-                            <li class="user-footer">
-                                <div class="pull-right">
-                                    <a (click)="cerrarSesion()" class="btn btn-default btn-flat">Cerrar Sesión</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li> -->
+                    <li>
+                        <span class="g-font--16 g-font--bold" style="color: #9A3295;">{{nombre}}</span>
+                    </li>
+                    <li>
+                        <span class="g-font--14 g-font--bold" style="color: #6C7579;">[ {{rol}} ]</span>
+                    </li>
+                    <li>
+                        <span class="g-font--14 g-font--bold" style="color: #26292B;">{{fecha}}</span>
+                    </li>
     
                 </ul>
+                <div class="mx-auto g-mr--15">
+                    <div class="g-circle--purple3 g-box--shadow2 d-flex align-items-center justify-content-center mx-auto mx-lg-0">
+                      <span class="g-font--15 g-font--bold" style="color: white;">{{avatar}}</span>
+                    </div>
+                  </div>
             </div>
         </div>
     </nav>

@@ -1017,7 +1017,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .navbar-nav {
-  display: block !important;
+  display: flex !important;
+  align-items: end;
+  padding-right: 10px;
 }
 
 .treeview-menu {

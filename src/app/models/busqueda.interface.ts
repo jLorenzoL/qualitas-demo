@@ -8,6 +8,7 @@ export class Busqueda extends Page {
     codigo: string;
     descripcion: string;
     estado: string;
+    criteria: string;
 
     /**
      * Constructor de la clase Busqueda
@@ -17,6 +18,7 @@ export class Busqueda extends Page {
         this.codigo = "";
         this.descripcion = "";
         this.estado = "";
+        this.criteria = "";
     }
 
 }
